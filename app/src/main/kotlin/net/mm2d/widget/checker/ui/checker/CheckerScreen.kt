@@ -114,7 +114,10 @@ fun CheckerScreen(
                         val widgetView = viewModel.createView()
                         viewModel.getSizeStream()
                             .onEach {
-                                widgetView.layoutParams = LayoutParams(it.width, it.height).also {
+                                widgetView.layoutParams = LayoutParams(
+                                    (it.width * density).toInt(),
+                                    (it.height * density).toInt(),
+                                ).also {
                                     it.gravity = Gravity.CENTER
                                 }
                             }
@@ -127,11 +130,13 @@ fun CheckerScreen(
                 )
             }
 
-            val width = providerInfo.minWidth
-            val height = providerInfo.minHeight
-            val min = 10 * density
-            val max = 560 * density
-            var widthPosition by remember { mutableFloatStateOf((width - min) / (max - min)) }
+            var width by remember { mutableIntStateOf((providerInfo.minWidth / density).toInt()) }
+            var height by remember { mutableIntStateOf((providerInfo.minHeight / density).toInt()) }
+            val widthRange = 10f..560f
+            val heightRange = 10f..560f
+            var widthPosition by remember {
+                mutableFloatStateOf((width - widthRange.start) / (widthRange.endInclusive - widthRange.start))
+            }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -146,13 +151,14 @@ fun CheckerScreen(
                     value = widthPosition,
                     onValueChange = {
                         widthPosition = it
-                        viewModel.setWidth(lerp(min, max, it).toInt())
+                        width = lerp(widthRange.start, widthRange.endInclusive, it).toInt()
+                        viewModel.setWidth(width.toFloat())
                     },
                     modifier = Modifier
                         .weight(1f),
                 )
                 Text(
-                    text = (lerp(min, max, widthPosition) / density).toInt().toString(),
+                    text = width.toString(),
                     textAlign = TextAlign.End,
                     fontSize = 12.sp,
                     modifier = Modifier
@@ -160,7 +166,9 @@ fun CheckerScreen(
                         .width(24.dp),
                 )
             }
-            var heightPosition by remember { mutableFloatStateOf((height - min) / (max - min)) }
+            var heightPosition by remember {
+                mutableFloatStateOf((height - heightRange.start) / (heightRange.endInclusive - heightRange.start))
+            }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -175,13 +183,14 @@ fun CheckerScreen(
                     value = heightPosition,
                     onValueChange = {
                         heightPosition = it
-                        viewModel.setHeight(lerp(min, max, it).toInt())
+                        height = lerp(heightRange.start, heightRange.endInclusive, it).toInt()
+                        viewModel.setHeight(height.toFloat())
                     },
                     modifier = Modifier
                         .weight(1f),
                 )
                 Text(
-                    text = (lerp(min, max, heightPosition) / density).toInt().toString(),
+                    text = height.toString(),
                     textAlign = TextAlign.End,
                     fontSize = 12.sp,
                     modifier = Modifier

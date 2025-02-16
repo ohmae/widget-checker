@@ -14,7 +14,6 @@ import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Size
 import android.util.SizeF
 import android.view.View
 import androidx.core.os.bundleOf
@@ -35,9 +34,9 @@ class CheckerViewModel(
     private val appWidgetHost: AppWidgetHost = AppWidgetHost(application, HOST_ID)
     private var providerInfo: AppWidgetProviderInfo? = null
     private var id: Int = AppWidgetManager.INVALID_APPWIDGET_ID
-    private val sizeFlow = MutableStateFlow(Size(0, 0))
+    private val sizeFlow = MutableStateFlow(SizeF(0f, 0f))
 
-    fun getSizeStream(): StateFlow<Size> = sizeFlow.asStateFlow()
+    fun getSizeStream(): StateFlow<SizeF> = sizeFlow.asStateFlow()
     fun getAppWidgetProviderInfo(): AppWidgetProviderInfo? = providerInfo
     fun getAppWidgetId(): Int = id
 
@@ -59,18 +58,18 @@ class CheckerViewModel(
     fun bind(): Boolean {
         if (id == AppWidgetManager.INVALID_APPWIDGET_ID) return false
         val providerInfo = providerInfo ?: return false
-        val options = makeOptions(providerInfo.minWidth, providerInfo.minHeight)
-        sizeFlow.value = Size(providerInfo.minWidth, providerInfo.minHeight)
+        val density = context.resources.displayMetrics.density
+        val widthDp = providerInfo.minWidth / density
+        val heightDp = providerInfo.minHeight / density
+        val options = makeOptions(widthDp, heightDp)
+        sizeFlow.value = SizeF(widthDp, heightDp)
         return appWidgetManager.bindAppWidgetIdIfAllowed(id, providerInfo.provider, options)
     }
 
     private fun makeOptions(
-        widthPx: Int,
-        heightPx: Int,
+        width: Float,
+        height: Float,
     ): Bundle {
-        val density = context.resources.displayMetrics.density
-        val width = widthPx / density
-        val height = heightPx / density
         val options = bundleOf(
             AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH to width.toInt(),
             AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT to height.toInt(),
@@ -103,17 +102,17 @@ class CheckerViewModel(
     }
 
     fun setWidth(
-        width: Int,
+        width: Float,
     ) {
-        sizeFlow.update { Size(width, it.height) }
+        sizeFlow.update { SizeF(width, it.height) }
         val options = makeOptions(width, sizeFlow.value.height)
         appWidgetManager.updateAppWidgetOptions(id, options)
     }
 
     fun setHeight(
-        height: Int,
+        height: Float,
     ) {
-        sizeFlow.update { Size(it.width, height) }
+        sizeFlow.update { SizeF(it.width, height) }
         val options = makeOptions(sizeFlow.value.width, height)
         appWidgetManager.updateAppWidgetOptions(id, options)
     }
