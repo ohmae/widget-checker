@@ -170,13 +170,13 @@ private fun WidgetEntry(
 ) {
     Column(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(start = 8.dp, bottom = 8.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerHigh)
-            .padding(8.dp)
-            .width(128.dp)
             .clickable {
                 navigateToExperiment(widget.className)
-            },
+            }
+            .padding(8.dp)
+            .width(128.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
