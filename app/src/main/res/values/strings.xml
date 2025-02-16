@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">widget-checker</string>
+    <string name="title_list">Widget List</string>
+    <string name="title_checker">Widget Checker</string>
+    <string name="menu_license">オープンソースライセンス</string>
 </resources>

@@ -17,6 +17,7 @@
     </queries>
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
@@ -26,14 +27,12 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
-        tools:targetApi="31"
         tools:ignore="UnusedAttribute"
+        tools:targetApi="31"
         >
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.App"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -19,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 import net.mm2d.widget.checker.ui.checker.CheckerScreen
+import net.mm2d.widget.checker.ui.license.LicenseScreen
 import net.mm2d.widget.checker.ui.list.ListScreen
 
 @Serializable
@@ -28,6 +29,9 @@ data object ListScreen
 data class ExperimentScreen(
     val className: String,
 )
+
+@Serializable
+data object LicenseScreen
 
 @Composable
 fun NavigationRoot() {
@@ -53,11 +57,21 @@ fun NavigationRoot() {
                 navigateToExperiment = {
                     navController.navigate(ExperimentScreen(it))
                 },
+                navigateToLicense = {
+                    navController.navigate(LicenseScreen)
+                },
             )
         }
         composable<ExperimentScreen> {
             CheckerScreen(
                 className = it.toRoute<ExperimentScreen>().className,
+                popBackStack = {
+                    navController.popBackStack()
+                },
+            )
+        }
+        composable<LicenseScreen> {
+            LicenseScreen(
                 popBackStack = {
                     navController.popBackStack()
                 },

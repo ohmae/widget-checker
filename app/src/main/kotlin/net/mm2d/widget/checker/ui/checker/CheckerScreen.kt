@@ -38,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,8 +47,8 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import net.mm2d.widget.checker.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CheckerScreen(
     className: String,
@@ -94,11 +95,7 @@ fun CheckerScreen(
     val density = LocalContext.current.resources.displayMetrics.density
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = {
-            TopAppBar(
-                title = { Text("Widget Check") },
-            )
-        },
+        topBar = { Toolbar() },
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -124,6 +121,7 @@ fun CheckerScreen(
                             .launchIn(scope)
                         FrameLayout(context).also {
                             it.addView(widgetView)
+                            it.setBackgroundColor(0xFF808080.toInt())
                         }
                     },
                 )
@@ -142,7 +140,7 @@ fun CheckerScreen(
                     fontSize = 12.sp,
                     modifier = Modifier
                         .padding(start = 8.dp)
-                        .width(48.dp),
+                        .width(40.dp),
                 )
                 Slider(
                     value = widthPosition,
@@ -151,8 +149,7 @@ fun CheckerScreen(
                         viewModel.setWidth(lerp(min, max, it).toInt())
                     },
                     modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 8.dp),
+                        .weight(1f),
                 )
                 Text(
                     text = (lerp(min, max, widthPosition) / density).toInt().toString(),
@@ -160,7 +157,7 @@ fun CheckerScreen(
                     fontSize = 12.sp,
                     modifier = Modifier
                         .padding(end = 8.dp)
-                        .width(40.dp),
+                        .width(24.dp),
                 )
             }
             var heightPosition by remember { mutableFloatStateOf((height - min) / (max - min)) }
@@ -172,7 +169,7 @@ fun CheckerScreen(
                     fontSize = 12.sp,
                     modifier = Modifier
                         .padding(start = 8.dp)
-                        .width(48.dp),
+                        .width(40.dp),
                 )
                 Slider(
                     value = heightPosition,
@@ -181,8 +178,7 @@ fun CheckerScreen(
                         viewModel.setHeight(lerp(min, max, it).toInt())
                     },
                     modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 8.dp),
+                        .weight(1f),
                 )
                 Text(
                     text = (lerp(min, max, heightPosition) / density).toInt().toString(),
@@ -190,9 +186,17 @@ fun CheckerScreen(
                     fontSize = 12.sp,
                     modifier = Modifier
                         .padding(end = 8.dp)
-                        .width(40.dp),
+                        .width(24.dp),
                 )
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun Toolbar() {
+    TopAppBar(
+        title = { Text(text = stringResource(id = R.string.title_checker)) },
+    )
 }

@@ -44,8 +44,10 @@ dependencies {
     implementation(libs.kotlinxSerializationCore)
     implementation(libs.androidxCore)
     implementation(libs.androidxLifecycleRuntime)
+    implementation(libs.androidxLifecycleProcess)
     implementation(libs.androidxLifecycleViewModelCompose)
     implementation(libs.androidxActivityCompose)
+    implementation(libs.androidxBrowser)
     implementation(platform(libs.androidxComposeBom))
     implementation(libs.androidxComposeUi)
     implementation(libs.androidxComposeUiGraphics)
@@ -54,6 +56,7 @@ dependencies {
     implementation(libs.androidxNavigationCompose)
     implementation(libs.accompanistDrawablePainter)
     implementation(libs.accompanistPermissions)
+    implementation(libs.material)
     debugImplementation(libs.androidxComposeUiTooling)
     debugImplementation(libs.androidxComposeUiTestManifest)
 }
