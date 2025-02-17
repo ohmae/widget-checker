@@ -30,6 +30,7 @@ class CheckerViewModel(
         get() = getApplication()
     private val appWidgetManager: AppWidgetManager
         get() = AppWidgetManager.getInstance(context)
+    private var packageName: String = ""
     private var className: String = ""
     private val appWidgetHost: AppWidgetHost = AppWidgetHost(application, HOST_ID)
     private var providerInfo: AppWidgetProviderInfo? = null
@@ -41,15 +42,17 @@ class CheckerViewModel(
     fun getAppWidgetId(): Int = id
 
     fun initialize(
+        packageName: String,
         className: String,
     ) {
-        if (this.className == className) return
-        if (this.className.isEmpty()) {
+        if (this.packageName == packageName && this.className == className) return
+        if (this.className.isNotEmpty()) {
             clear()
         }
+        this.packageName = packageName
         this.className = className
         providerInfo = appWidgetManager.installedProviders
-            .find { it.provider.className == className }
+            .find { it.provider.packageName == packageName && it.provider.className == className }
         providerInfo ?: return
         appWidgetHost.startListening()
         id = appWidgetHost.allocateAppWidgetId()

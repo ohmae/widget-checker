@@ -55,7 +55,7 @@ import net.mm2d.widget.checker.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListScreen(
-    navigateToExperiment: (String) -> Unit,
+    navigateToExperiment: (packageName: String, className: String) -> Unit,
     navigateToLicense: () -> Unit,
 ) {
     val viewModel: ListViewModel = viewModel()
@@ -121,7 +121,7 @@ private fun Toolbar(
 @Composable
 private fun AppEntry(
     appEntry: AppEntry,
-    navigateToExperiment: (String) -> Unit,
+    navigateToExperiment: (packageName: String, className: String) -> Unit,
 ) {
     Column {
         HorizontalDivider(
@@ -166,14 +166,14 @@ private fun AppEntry(
 @Composable
 private fun WidgetEntry(
     widget: WidgetEntry,
-    navigateToExperiment: (String) -> Unit,
+    navigateToExperiment: (packageName: String, className: String) -> Unit,
 ) {
     Column(
         modifier = Modifier
             .padding(start = 8.dp, bottom = 8.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerHigh)
             .clickable {
-                navigateToExperiment(widget.className)
+                navigateToExperiment(widget.packageName, widget.className)
             }
             .padding(8.dp)
             .width(128.dp),

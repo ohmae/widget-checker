@@ -27,6 +27,7 @@ data object ListScreen
 
 @Serializable
 data class ExperimentScreen(
+    val packageName: String,
     val className: String,
 )
 
@@ -54,8 +55,8 @@ fun NavigationRoot() {
     ) {
         composable<ListScreen> {
             ListScreen(
-                navigateToExperiment = {
-                    navController.navigate(ExperimentScreen(it))
+                navigateToExperiment = { packageName, className ->
+                    navController.navigate(ExperimentScreen(packageName, className))
                 },
                 navigateToLicense = {
                     navController.navigate(LicenseScreen)
@@ -63,8 +64,10 @@ fun NavigationRoot() {
             )
         }
         composable<ExperimentScreen> {
+            val arguments = it.toRoute<ExperimentScreen>()
             CheckerScreen(
-                className = it.toRoute<ExperimentScreen>().className,
+                packageName = arguments.packageName,
+                className = arguments.className,
                 popBackStack = {
                     navController.popBackStack()
                 },

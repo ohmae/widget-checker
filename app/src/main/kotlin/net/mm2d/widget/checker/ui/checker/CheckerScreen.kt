@@ -51,11 +51,12 @@ import net.mm2d.widget.checker.R
 
 @Composable
 fun CheckerScreen(
+    packageName: String,
     className: String,
     popBackStack: () -> Unit,
 ) {
     val viewModel: CheckerViewModel = viewModel()
-    var appWidgetId by remember(className) { mutableIntStateOf(AppWidgetManager.INVALID_APPWIDGET_ID) }
+    var appWidgetId by remember(packageName, className) { mutableIntStateOf(AppWidgetManager.INVALID_APPWIDGET_ID) }
     val permissionLauncher = rememberLauncherForActivityResult(StartActivityForResult()) {
         popBackStack()
     }
@@ -67,8 +68,8 @@ fun CheckerScreen(
         viewModel.cancel()
         popBackStack()
     }
-    viewModel.initialize(className)
-    LaunchedEffect(className) {
+    viewModel.initialize(packageName, className)
+    LaunchedEffect(packageName, className) {
         val providerInfo = viewModel.getAppWidgetProviderInfo()
         if (providerInfo == null) {
             popBackStack()
