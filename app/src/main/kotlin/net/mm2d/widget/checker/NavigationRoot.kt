@@ -7,6 +7,7 @@
 
 package net.mm2d.widget.checker
 
+import android.content.ComponentName
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideIn
@@ -66,8 +67,7 @@ fun NavigationRoot() {
         composable<ExperimentScreen> {
             val arguments = it.toRoute<ExperimentScreen>()
             CheckerScreen(
-                packageName = arguments.packageName,
-                className = arguments.className,
+                componentName = ComponentName(arguments.packageName, arguments.className),
                 popBackStack = {
                     navController.popBackStack()
                 },

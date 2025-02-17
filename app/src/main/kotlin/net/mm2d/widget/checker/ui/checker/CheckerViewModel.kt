@@ -11,6 +11,7 @@ import android.app.Application
 import android.appwidget.AppWidgetHost
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
+import android.content.ComponentName
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -30,8 +31,7 @@ class CheckerViewModel(
         get() = getApplication()
     private val appWidgetManager: AppWidgetManager
         get() = AppWidgetManager.getInstance(context)
-    private var packageName: String = ""
-    private var className: String = ""
+    private var componentName: ComponentName = ComponentName("", "")
     private val appWidgetHost: AppWidgetHost = AppWidgetHost(application, HOST_ID)
     private var providerInfo: AppWidgetProviderInfo? = null
     private var id: Int = AppWidgetManager.INVALID_APPWIDGET_ID
@@ -42,17 +42,15 @@ class CheckerViewModel(
     fun getAppWidgetId(): Int = id
 
     fun initialize(
-        packageName: String,
-        className: String,
+        componentName: ComponentName,
     ) {
-        if (this.packageName == packageName && this.className == className) return
-        if (this.className.isNotEmpty()) {
+        if (this.componentName == componentName) return
+        if (this.componentName.className.isNotEmpty()) {
             clear()
         }
-        this.packageName = packageName
-        this.className = className
+        this.componentName = componentName
         providerInfo = appWidgetManager.installedProviders
-            .find { it.provider.packageName == packageName && it.provider.className == className }
+            .find { it.provider == componentName }
         providerInfo ?: return
         appWidgetHost.startListening()
         id = appWidgetHost.allocateAppWidgetId()
