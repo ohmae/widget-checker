@@ -1,6 +1,6 @@
-androidx.activity:activity-compose:1.10.0
-androidx.activity:activity-ktx:1.10.0
-androidx.activity:activity:1.10.0
+androidx.activity:activity-compose:1.10.1
+androidx.activity:activity-ktx:1.10.1
+androidx.activity:activity:1.10.1
 androidx.annotation:annotation-experimental:1.4.1
 androidx.annotation:annotation-jvm:1.8.1
 androidx.annotation:annotation:1.8.1
@@ -52,6 +52,7 @@ androidx.constraintlayout:constraintlayout-solver:2.0.1
 androidx.constraintlayout:constraintlayout:2.0.1
 androidx.coordinatorlayout:coordinatorlayout:1.1.0
 androidx.core:core-ktx:1.15.0
+androidx.core:core-viewtree:1.0.0
 androidx.core:core:1.15.0
 androidx.cursoradapter:cursoradapter:1.0.0
 androidx.customview:customview-poolingcontainer:1.0.0
@@ -86,11 +87,11 @@ androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7
 androidx.lifecycle:lifecycle-viewmodel:2.8.7
 androidx.loader:loader:1.0.0
 androidx.localbroadcastmanager:localbroadcastmanager:1.0.0
-androidx.navigation:navigation-common-ktx:2.8.7
-androidx.navigation:navigation-common:2.8.7
-androidx.navigation:navigation-compose:2.8.7
-androidx.navigation:navigation-runtime-ktx:2.8.7
-androidx.navigation:navigation-runtime:2.8.7
+androidx.navigation:navigation-common-ktx:2.8.8
+androidx.navigation:navigation-common:2.8.8
+androidx.navigation:navigation-compose:2.8.8
+androidx.navigation:navigation-runtime-ktx:2.8.8
+androidx.navigation:navigation-runtime:2.8.8
 androidx.print:print:1.0.0
 androidx.profileinstaller:profileinstaller:1.4.0
 androidx.recyclerview:recyclerview:1.1.0
@@ -105,8 +106,8 @@ androidx.vectordrawable:vectordrawable:1.1.0
 androidx.versionedparcelable:versionedparcelable:1.1.1
 androidx.viewpager2:viewpager2:1.0.0
 androidx.viewpager:viewpager:1.0.0
-com.google.accompanist:accompanist-drawablepainter:0.37.0
-com.google.accompanist:accompanist-permissions:0.37.0
+com.google.accompanist:accompanist-drawablepainter:0.37.2
+com.google.accompanist:accompanist-permissions:0.37.2
 com.google.android.material:material:1.12.0
 com.google.errorprone:error_prone_annotations:2.15.0
 com.google.guava:listenablefuture:1.0
