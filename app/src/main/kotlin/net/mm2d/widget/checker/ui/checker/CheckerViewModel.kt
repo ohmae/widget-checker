@@ -9,6 +9,7 @@ package net.mm2d.widget.checker.ui.checker
 
 import android.app.Application
 import android.appwidget.AppWidgetHost
+import android.appwidget.AppWidgetHostView
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
 import android.content.ComponentName
@@ -16,7 +17,6 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.SizeF
-import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -92,7 +92,7 @@ class CheckerViewModel(
         id = AppWidgetManager.INVALID_APPWIDGET_ID
     }
 
-    fun createView(): View =
+    fun createView(): AppWidgetHostView =
         appWidgetHost.createView(context, id, providerInfo).also {
             it.setPadding(0, 0, 0, 0)
         }
