@@ -11,6 +11,7 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
+import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams
@@ -87,7 +88,11 @@ fun CheckerScreen(
             val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE)
             intent.component = providerInfo.configure
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, id)
-            configureLauncher.launch(intent)
+            try {
+                configureLauncher.launch(intent)
+            } catch (e: Exception) {
+                Log.w("CheckerScreen", "configure failed", e)
+            }
             return@LaunchedEffect
         }
         appWidgetId = id

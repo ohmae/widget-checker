@@ -1,17 +1,17 @@
 [versions]
-agp = "8.10.0"
-kotlin = "2.1.21"
+agp = "8.11.0"
+kotlin = "2.2.0"
 dependencyGuard = "0.5.0"
 gradleVersionsPlugin = "0.52.0"
 
 kotlinxCoroutines = "1.10.2"
-kotlinxSerialization = "1.8.1"
+kotlinxSerialization = "1.9.0"
 
 androidxCore = "1.16.0"
-androidxLifecycle = "2.9.0"
+androidxLifecycle = "2.9.1"
 androidxActivity = "1.10.1"
 androidxBrowser = "1.8.0"
-androidxComposeBom = "2025.05.01"
+androidxComposeBom = "2025.06.01"
 androidxNavigation = "2.9.0"
 accompanist = "0.37.3"
 material = "1.12.0"
