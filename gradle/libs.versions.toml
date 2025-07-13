@@ -1,5 +1,5 @@
 [versions]
-agp = "8.11.0"
+agp = "8.11.1"
 kotlin = "2.2.0"
 dependencyGuard = "0.5.0"
 gradleVersionsPlugin = "0.52.0"
@@ -12,7 +12,7 @@ androidxLifecycle = "2.9.1"
 androidxActivity = "1.10.1"
 androidxBrowser = "1.8.0"
 androidxComposeBom = "2025.06.01"
-androidxNavigation = "2.9.0"
+androidxNavigation = "2.9.1"
 accompanist = "0.37.3"
 material = "1.12.0"
 
