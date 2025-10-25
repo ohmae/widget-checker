@@ -1,8 +1,8 @@
 [versions]
 agp = "8.13.0"
-kotlin = "2.2.20"
+kotlin = "2.2.21"
 dependencyGuard = "0.5.0"
-gradleVersionsPlugin = "0.52.0"
+gradleVersionsPlugin = "0.53.0"
 
 kotlinxCoroutines = "1.10.2"
 kotlinxSerialization = "1.9.0"
@@ -11,8 +11,8 @@ androidxCore = "1.17.0"
 androidxLifecycle = "2.9.4"
 androidxActivity = "1.11.0"
 androidxBrowser = "1.9.0"
-androidxComposeBom = "2025.09.00"
-androidxNavigation = "2.9.4"
+androidxComposeBom = "2025.10.01"
+androidxNavigation = "2.9.5"
 accompanist = "0.37.3"
 material = "1.13.0"
 
@@ -34,6 +34,7 @@ androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" 
 androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidxComposeUiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
+androidxComposeMaterialIconsCore = { group = "androidx.compose.material", name = "material-icons-core" }
 androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 accompanistDrawablePainter = { group = "com.google.accompanist", name = "accompanist-drawablepainter", version.ref = "accompanist" }
 accompanistPermissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
