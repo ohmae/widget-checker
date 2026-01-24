@@ -1,17 +1,17 @@
 [versions]
-agp = "8.13.2"
+agp = "9.0.0"
 kotlin = "2.3.0"
 dependencyGuard = "0.5.0"
 gradleVersionsPlugin = "0.53.0"
 
 kotlinxCoroutines = "1.10.2"
-kotlinxSerialization = "1.9.0"
+kotlinxSerialization = "1.10.0"
 
 androidxCore = "1.17.0"
 androidxLifecycle = "2.10.0"
 androidxActivity = "1.12.2"
 androidxBrowser = "1.9.0"
-androidxComposeBom = "2025.12.01"
+androidxComposeBom = "2026.01.00"
 androidxNavigation = "2.9.6"
 accompanist = "0.37.3"
 material = "1.13.0"
@@ -19,6 +19,9 @@ material = "1.13.0"
 ktlint = "1.8.0"
 
 [libraries]
+# classPath
+kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
 kotlinxCoroutinesAndroid = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinxSerializationCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinxSerialization" }
 androidxCore = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
@@ -44,7 +47,6 @@ ktlint = { group = "com.pinterest.ktlint", name = "ktlint-cli", version.ref = "k
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
