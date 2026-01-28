@@ -40,3 +40,4 @@ local.properties
 /.idea/sonarlint
 ehthumbs.db
 Thumbs.db
+/gradle/libs.versions.updates.toml
