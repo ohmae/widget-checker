@@ -20,10 +20,11 @@ local.properties
 .Spotlight-V100
 .Trashes
 /.idea/.name
+/.idea/AndroidProjectSystem.xml
 /.idea/androidTestResultsUserPreferences.xml
 /.idea/appInsightsSettings.xml
 /.idea/codeStyles
-/.idea/copilot
+/.idea/copilot.*.xml
 /.idea/copyright
 /.idea/deploymentTargetDropDown.xml
 /.idea/deploymentTargetSelector.xml
