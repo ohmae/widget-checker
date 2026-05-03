@@ -28,12 +28,14 @@ local.properties
 /.idea/copyright
 /.idea/deploymentTargetDropDown.xml
 /.idea/deploymentTargetSelector.xml
+/.idea/deviceManager.xml
 /.idea/dictionaries
 /.idea/encodings.xml
 /.idea/gradle.xml
 /.idea/inspectionProfiles
 /.idea/jarRepositories.xml
 /.idea/kotlinc.xml
+/.idea/markdown.xml
 /.idea/migrations.xml
 /.idea/misc.xml
 /.idea/other.xml
