@@ -10,7 +10,7 @@ plugins {
 android {
     namespace = "net.mm2d.widget.checker"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
