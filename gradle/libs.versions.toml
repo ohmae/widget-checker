@@ -1,5 +1,5 @@
 [versions]
-agp = "9.4.0"
+agp = "9.4.1"
 kotlin = "2.4.20"
 dependencyGuard = "0.5.0"
 versionCatalogUpdate = "1.1.1"
@@ -7,12 +7,12 @@ versionCatalogUpdate = "1.1.1"
 kotlinxCoroutines = "1.11.0"
 kotlinxSerialization = "1.11.0"
 
-androidxCore = "1.19.0"
+androidxCore = "1.19.1"
 androidxLifecycle = "2.11.0"
 androidxActivity = "1.13.0"
 androidxBrowser = "1.10.0"
 androidxComposeBom = "2026.09.00"
-androidxNavigation = "2.10.1"
+androidxNavigation = "2.10.2"
 accompanist = "0.37.3"
 material = "1.14.0"
 
